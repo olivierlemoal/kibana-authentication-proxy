@@ -11,8 +11,14 @@ var express = require('express');
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+try{
+  var config = require('./' + process.argv[2]);
+}
+catch (ex){
+  usage();
+}
 
-var config = require('./config');
+
 var app = express();
 
 console.log('Server starting...');
@@ -37,6 +43,13 @@ app.get('/config.js', kibana3configjs);
 app.use(express.compress());
 app.use('/', express.static(__dirname + '/kibana/src', {maxAge: config.brower_cache_maxage || 0}));
 
+function usage(){
+  if(typeof process.argv[2] !== 'undefined') {
+    console.log(process.argv[2] + ' not found.');
+  }
+  console.log('Usage : node app.js <config file>');
+  process.exit();
+}
 
 run();
 
