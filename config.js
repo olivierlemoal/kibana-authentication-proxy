@@ -82,16 +82,17 @@ module.exports =  {
         // The User&Passwd list for basic auth
         "basic_auth_users": [
             {"user": "demo1", "password": "pwd1"},
-            {"user": "demo1", "password": "pwd2"},
+            {"user": "demo2", "password": "pwd2"},
         ],
 
 
     // =================================
     // CAS SSO Login
     // Enable? true or false
-    "enable_cas_auth": false,
+    "enable_cas_auth": true,
         // Point to the CAS authentication URL
-        "cas_server_url": "https://point-to-the-cas-server/cas",
+        "cas_server_url": "",
         // CAS protocol version, one of 1.0 or 2.0
-        "cas_protocol_version": 1.0,
+        "cas_protocol_version": 2.0,
+        "authorized_users": [""],
 };
